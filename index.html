@@ -1,0 +1,1616 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Cuánto sabes de regulación emocional?</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #121a33;
+        --panel-2: #182347;
+        --accent: #f58220;
+        --accent-2: #ffd100;
+        --text: #f5f7fb;
+        --muted: #b6c1de;
+        --success: #28c76f;
+        --danger: #ff5b5b;
+        --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        --radius: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(245, 130, 32, 0.18),
+            transparent 18%
+          ),
+          radial-gradient(
+            circle at left bottom,
+            rgba(255, 209, 0, 0.1),
+            transparent 20%
+          ),
+          linear-gradient(135deg, #09101d, #0d1530 55%, #0d1225);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 24px;
+      }
+
+      .app {
+        max-width: 1320px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backdrop-filter: blur(6px);
+      }
+
+      .hero {
+        padding: 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(245, 130, 32, 0.1),
+          rgba(255, 255, 255, 0.02)
+        );
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 209, 0, 0.16);
+        color: var(--accent-2);
+        font-size: 13px;
+        letter-spacing: 0.4px;
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 4vw, 46px);
+        line-height: 1.04;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 70ch;
+      }
+
+      .stage {
+        padding: 24px 28px 28px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .question-box {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 22px;
+        margin-bottom: 20px;
+      }
+
+      .question-label {
+        color: var(--accent-2);
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .question-text {
+        margin: 0;
+        font-size: clamp(20px, 2vw, 28px);
+        line-height: 1.35;
+      }
+
+      .answers {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .answer {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(24, 35, 71, 0.95),
+          rgba(14, 22, 44, 0.95)
+        );
+        color: var(--text);
+        border-radius: 18px;
+        padding: 16px 18px;
+        text-align: left;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease,
+          opacity 0.2s ease;
+        min-height: 78px;
+        font-size: 16px;
+        line-height: 1.35;
+      }
+
+      .answer:hover:not(:disabled) {
+        transform: translateY(-2px);
+        border-color: rgba(255, 209, 0, 0.55);
+      }
+
+      .answer:disabled {
+        cursor: default;
+      }
+      .answer.correct {
+        background: rgba(40, 199, 111, 0.18);
+        border-color: rgba(40, 199, 111, 0.9);
+      }
+      .answer.wrong {
+        background: rgba(255, 91, 91, 0.18);
+        border-color: rgba(255, 91, 91, 0.9);
+      }
+      .answer.faded {
+        opacity: 0.22;
+      }
+      .answer.selected {
+        border-color: rgba(245, 130, 32, 0.95);
+        box-shadow: inset 0 0 0 1px rgba(245, 130, 32, 0.65);
+      }
+
+      .controls-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .meta-box {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 16px;
+      }
+
+      .meta-title {
+        color: var(--muted);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 8px;
+      }
+
+      .meta-value {
+        font-size: clamp(14px, 2vw, 20px);
+        font-weight: 700;
+        word-break: break-word;
+      }
+
+      .sidebar {
+        padding: 22px;
+      }
+
+      .section-title {
+        margin: 0 0 14px;
+        font-size: 18px;
+      }
+
+      .lifelines {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .tool-btn,
+      .primary-btn,
+      .secondary-btn,
+      .ghost-btn {
+        border: none;
+        border-radius: 16px;
+        padding: 14px 16px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .tool-btn:hover:not(:disabled),
+      .primary-btn:hover,
+      .secondary-btn:hover,
+      .ghost-btn:hover {
+        transform: translateY(-2px);
+      }
+      .tool-btn:disabled,
+      .ghost-btn:disabled,
+      .primary-btn:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+
+      .tool-btn {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 209, 0, 0.18),
+          rgba(245, 130, 32, 0.14)
+        );
+        color: var(--text);
+        border: 1px solid rgba(255, 209, 0, 0.18);
+        text-align: left;
+      }
+
+      .primary-btn {
+        background: linear-gradient(180deg, var(--accent), #da6f14);
+        color: #fff;
+      }
+
+      .secondary-btn {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .ghost-btn {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .message {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 16px;
+        color: var(--muted);
+        min-height: 116px;
+        line-height: 1.5;
+      }
+
+      .bank {
+        margin-top: 22px;
+      }
+
+      .question-bank {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      .bank-btn {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        border-radius: 14px;
+        padding: 12px 10px;
+        font-weight: 700;
+        cursor: pointer;
+        min-height: 54px;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .bank-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        border-color: rgba(255, 209, 0, 0.55);
+      }
+      .bank-btn.current {
+        border-color: rgba(245, 130, 32, 0.9);
+        background: rgba(245, 130, 32, 0.16);
+      }
+      .bank-btn.done {
+        border-color: rgba(40, 199, 111, 0.7);
+        background: rgba(40, 199, 111, 0.14);
+      }
+      .bank-btn.wrong {
+        border-color: rgba(255, 91, 91, 0.7);
+        background: rgba(255, 91, 91, 0.14);
+      }
+
+      .result-overlay,
+      .start-overlay,
+      .hint-overlay,
+      .register-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 20, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 20;
+      }
+
+      .result-box,
+      .start-box,
+      .hint-box,
+      .register-box {
+        max-width: 760px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: linear-gradient(180deg, #172347, #0f1934);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .result-box {
+        text-align: center;
+      }
+
+      .result-box h2,
+      .start-box h2,
+      .hint-box h2,
+      .register-box h2 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 4vw, 42px);
+      }
+
+      .result-box p,
+      .start-box p,
+      .hint-box p,
+      .register-box p {
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0 0 18px;
+        font-size: 17px;
+      }
+
+      .register-form {
+        display: grid;
+        gap: 16px;
+        margin: 24px 0;
+      }
+
+      .form-group {
+        display: grid;
+        gap: 8px;
+      }
+
+      .form-group label {
+        color: var(--accent-2);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .form-group input {
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        font-size: 15px;
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: rgba(245, 130, 32, 0.6);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .error-message {
+        color: var(--danger);
+        font-size: 13px;
+        margin-top: 4px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .result-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 8px 12px;
+        background: rgba(255, 209, 0, 0.16);
+        color: var(--accent-2);
+        border-radius: 999px;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+
+      .attempts {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hint-steps {
+        display: grid;
+        gap: 10px;
+        margin: 18px 0;
+      }
+
+      .hint-step {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 14px;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .feedback-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 20, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 30;
+      }
+
+      .feedback-box {
+        max-width: 600px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: linear-gradient(180deg, #172347, #0f1934);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .feedback-box p {
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0 0 18px;
+        font-size: 17px;
+      }
+
+      @media (max-width: 980px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .question-bank {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 860px) {
+        .meta-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        body {
+          padding: 14px;
+        }
+        .hero,
+        .stage,
+        .sidebar {
+          padding: 18px;
+        }
+        .answers {
+          grid-template-columns: 1fr;
+        }
+        .meta-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .result-box,
+        .start-box,
+        .hint-box,
+        .register-box {
+          padding: 20px;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .question-bank {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .meta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="register-overlay" id="registerOverlay" style="display: flex">
+      <div class="register-box">
+        <div class="tag">Información requerida</div>
+        <h2>Bienvenido al simulador</h2>
+        <p>
+          Por favor, completa tus datos antes de comenzar. Estos datos serán
+          guardados en el formulario de resultados.
+        </p>
+        <form class="register-form" id="registerForm">
+          <div class="form-group">
+            <label for="registerName">Nombre completo *</label>
+            <input
+              type="text"
+              id="registerName"
+              placeholder="Ej: Juan García"
+              required
+            />
+            <div class="error-message" id="nameError">
+              El nombre es obligatorio
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerDocument">Número de documento *</label>
+            <input
+              type="text"
+              id="registerDocument"
+              placeholder="Ej: 1234567890"
+              required
+            />
+            <div class="error-message" id="documentError">
+              El número de documento es obligatorio
+            </div>
+          </div>
+        </form>
+        <div class="result-actions" style="justify-content: flex-start">
+          <button class="primary-btn" id="registerBtn">
+            Continuar al simulador
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-overlay" id="startOverlay" style="display: none">
+      <div class="start-box">
+        <div class="tag">Taller interactivo</div>
+        <h2>¿Cuánto sabes de regulación emocional?</h2>
+        <p>
+          Este simulador permite elegir preguntas libremente, acumular
+          respuestas correctas y usar ayudas conceptuales antes de responder.
+          Cuando una respuesta sea incorrecta, el sistema la registrará como
+          incorrecta y mostrará la retroalimentación del porqué.
+        </p>
+        <div class="hint-steps">
+          <div class="hint-step">
+            <strong>Cómo funciona:</strong> eliges una pregunta, seleccionas una
+            opción y esa selección se toma como respuesta definitiva.
+          </div>
+          <div class="hint-step">
+            <strong>Ayuda conceptual:</strong> puedes revisar una pista antes de
+            responder con el botón de ayuda.
+          </div>
+          <div class="hint-step">
+            <strong>Meta:</strong> completar las 15 preguntas acumulando la
+            mayor cantidad de respuestas correctas.
+          </div>
+        </div>
+        <div class="result-actions" style="justify-content: flex-start">
+          <button class="primary-btn" id="startBtn">Comenzar simulador</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      <section class="card">
+        <div class="hero">
+          <div class="eyebrow">Simulador interactivo para taller</div>
+          <h1>¿Cuánto sabes de regulación emocional?</h1>
+          <p class="subtitle">
+            Un juego tipo concurso para repasar qué es la regulación emocional,
+            sus autores de referencia, sus estrategias clave y su aplicación
+            en el entorno laboral.
+          </p>
+        </div>
+
+        <div class="stage">
+          <div class="topbar">
+            <div class="pill" id="progressText">Pregunta 1 de 15</div>
+            <div class="pill" id="levelText">Nivel 1 · Apertura conceptual</div>
+            <div class="pill" id="scoreText">Puntaje: 0</div>
+            <div class="pill" id="accumulatedText">Acumuladas: 0/15</div>
+          </div>
+
+          <div class="question-box">
+            <div class="question-label">Pregunta actual</div>
+            <p class="question-text" id="questionText"></p>
+            <div class="attempts" id="attemptsText">
+              Intentos en esta pregunta: 0
+            </div>
+          </div>
+
+          <div class="answers" id="answersContainer"></div>
+
+          <div class="controls-row">
+            <button class="secondary-btn" id="showHintBtn">
+              Revisar ayuda conceptual
+            </button>
+            <button class="ghost-btn" id="nextPendingBtn">
+              Siguiente pregunta
+            </button>
+          </div>
+
+          <div class="message" id="messageBox">
+            Selecciona una opción. Esa selección se tomará como respuesta. Si es
+            incorrecta, verás por qué y la pregunta quedará registrada como
+            incorrecta.
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-box">
+              <div class="meta-title">Aciertos</div>
+              <div class="meta-value" id="correctCount">0</div>
+            </div>
+            <div class="meta-box">
+              <div class="meta-title">Tiempo</div>
+              <div class="meta-value" id="timer">30s</div>
+            </div>
+            <div class="meta-box">
+              <div class="meta-title">Meta</div>
+              <div class="meta-value" id="goalText">
+                Comprender e intervenir
+              </div>
+            </div>
+            <div class="meta-box">
+              <div class="meta-title">Pendientes</div>
+              <div class="meta-value" id="pendingText">15</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card sidebar">
+        <h3 class="section-title">Datos del estudiante</h3>
+        <div style="display: grid; gap: 10px; margin-bottom: 20px">
+          <input
+            type="text"
+            id="studentName"
+            placeholder="Nombre completo"
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              background: rgba(255, 255, 255, 0.05);
+              color: var(--text);
+              font-size: 14px;
+            "
+          />
+          <input
+            type="text"
+            id="studentID"
+            placeholder="ID / Número de cédula"
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              background: rgba(255, 255, 255, 0.05);
+              color: var(--text);
+              font-size: 14px;
+            "
+          />
+        </div>
+
+        <h3 class="section-title">Herramientas del juego</h3>
+        <div class="lifelines">
+          <button class="tool-btn" id="fiftyBtn">
+            50/50 · Elimina dos opciones
+          </button>
+          <button class="tool-btn" id="hintBtn">
+            Pista teórica · Ayuda antes de responder
+          </button>
+          <button class="tool-btn" id="audienceBtn">
+            Consulta al grupo · Sugiere la opción probable
+          </button>
+        </div>
+
+      </aside>
+    </div>
+
+    <div class="feedback-overlay" id="feedbackOverlay">
+      <div class="feedback-box">
+        <div class="tag" id="feedbackTag">Retroalimentación</div>
+        <p id="feedbackMessage"></p>
+        <div class="result-actions" style="justify-content: flex-start">
+          <button class="primary-btn" id="closeFeedbackBtn">Continuar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hint-overlay" id="hintOverlay">
+      <div class="hint-box">
+        <div class="tag">Ayuda conceptual</div>
+        <h2 id="hintTitle">Pista de apoyo</h2>
+        <p id="hintMessage"></p>
+        <div class="hint-steps" id="hintSteps"></div>
+        <div class="result-actions" style="justify-content: flex-start">
+          <button class="primary-btn" id="closeHintBtn">Continuar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-overlay" id="resultOverlay">
+      <div class="result-box">
+        <div class="tag" id="finalTag">Resultado final</div>
+        <h2 id="finalTitle">Excelente trabajo</h2>
+        <p id="finalMessage"></p>
+        <div class="result-actions">
+          <button class="primary-btn" id="restartBtn">Jugar de nuevo</button>
+          <button class="secondary-btn" id="sendResults">
+            Enviar resultados
+          </button>
+          <button class="ghost-btn" id="closeBtn">Cerrar resultado</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ========== CONFIGURACIÓN DE GOOGLE FORMS ==========
+      // Reemplaza estos valores con los de tu formulario
+      const FORM_BASE =
+        "https://docs.google.com/forms/d/e/1FAIpQLSf5Y4D-z4HL9ySjG7qv8W9CHZeFZsKnQbIxdpI5itWTZt7l9Q/formResponse";
+      const ENTRY = {
+        Nombre_Completo: "entry.495318394",
+        ID_Alumno: "entry.1862343610",
+        Nombre_Actividad: "entry.1949822258",
+        Puntaje: "entry.1109858717",
+        Maximo_Puntos: "entry.1032394267",
+        Porcentaje: "entry.572348352",
+      };
+      // =====================================================
+
+      const questions = [
+        {
+          level: "Nivel 1",
+          question: "¿Qué se entiende por regulación emocional?",
+          answers: [
+            "Evitar expresar emociones en el trabajo.",
+            "Reconocer, comprender y manejar las emociones para responder mejor.",
+            "Sentir únicamente emociones positivas.",
+            "Actuar según la emoción del momento.",
+          ],
+          correct: 1,
+          explanation:
+            "La regulación emocional consiste en reconocer, comprender y manejar las emociones para dar respuestas más conscientes y adecuadas al contexto.",
+          incorrectFeedback: [
+            "Incorrecto. Evitar expresar emociones no equivale a regularlas; la regulación implica reconocerlas y manejarlas.",
+            "",
+            "Incorrecto. La regulación no busca eliminar emociones negativas, sino manejar todas las emociones de forma adecuada.",
+            "Incorrecto. Actuar impulsivamente según la emoción es precisamente lo opuesto a la regulación emocional.",
+          ],
+          hint: "Piensa en qué habilidad permite reconocer y gestionar lo que sentimos para responder de manera más consciente.",
+        },
+        {
+          level: "Nivel 2",
+          question: "¿Cuál es una idea central de la regulación emocional?",
+          answers: [
+            "Las emociones deben desaparecer para tomar buenas decisiones.",
+            "Todas las emociones son negativas cuando aparecen en el trabajo.",
+            "Las emociones son válidas, pero la forma de responder puede regularse.",
+            "La mejor opción siempre es guardar silencio.",
+          ],
+          correct: 2,
+          explanation:
+            "Las emociones son válidas e informativas; lo que se puede regular es la forma en que respondemos a ellas.",
+          incorrectFeedback: [
+            "Incorrecto. Las emociones no deben desaparecer; son fuentes de información valiosa.",
+            "Incorrecto. Las emociones en sí no son negativas; depende de cómo se gestionan.",
+            "",
+            "Incorrecto. Guardar silencio no es siempre la respuesta adecuada; la regulación implica una respuesta consciente.",
+          ],
+          hint: "Recuerda que las emociones tienen un propósito; la clave está en cómo respondemos ante ellas.",
+        },
+        {
+          level: "Nivel 3",
+          question: "¿Quién es James Gross?",
+          answers: [
+            "Un psicólogo reconocido por estudiar la regulación emocional.",
+            "Un autor que estudió únicamente la motivación laboral.",
+            "Un médico dedicado al estudio del sueño.",
+            "Un pedagogo centrado en la evaluación académica.",
+          ],
+          correct: 0,
+          explanation:
+            "James Gross es un psicólogo ampliamente reconocido por sus investigaciones sobre la regulación emocional y sus estrategias.",
+          incorrectFeedback: [
+            "",
+            "Incorrecto. Gross no se centró solo en motivación laboral; su trabajo abarca la regulación emocional.",
+            "Incorrecto. James Gross es psicólogo, no médico, y su campo es la regulación emocional.",
+            "Incorrecto. Gross no es pedagogo; es un referente en psicología emocional.",
+          ],
+          hint: "Piensa en el autor más citado en estudios sobre cómo las personas manejan sus emociones.",
+        },
+        {
+          level: "Nivel 4",
+          question:
+            "Según James Gross, la regulación emocional permite principalmente:",
+          answers: [
+            "Controlar todo lo que ocurre alrededor.",
+            "Influir en cómo se experimentan y expresan las emociones.",
+            "Evitar cualquier emoción intensa.",
+            "Hacer que los demás cambien su conducta.",
+          ],
+          correct: 1,
+          explanation:
+            "Según Gross, la regulación emocional permite influir en el tipo, intensidad, momento y expresión de las emociones.",
+          incorrectFeedback: [
+            "Incorrecto. La regulación emocional no implica controlar el entorno externo.",
+            "",
+            "Incorrecto. No se trata de evitar emociones intensas, sino de manejar cómo se viven y expresan.",
+            "Incorrecto. La regulación emocional se enfoca en la propia experiencia, no en cambiar a los demás.",
+          ],
+          hint: "Gross se centró en la capacidad interna de modular la experiencia y expresión emocional.",
+        },
+        {
+          level: "Nivel 5",
+          question: "¿Quién es Daniel Goleman?",
+          answers: [
+            "Un investigador reconocido por hablar de inteligencia emocional.",
+            "Un autor especializado solo en productividad empresarial.",
+            "Un psicólogo centrado únicamente en la infancia.",
+            "Un filósofo que explicó la felicidad laboral.",
+          ],
+          correct: 0,
+          explanation:
+            "Daniel Goleman es conocido principalmente por popularizar el concepto de inteligencia emocional y su aplicación en distintos contextos.",
+          incorrectFeedback: [
+            "",
+            "Incorrecto. Goleman abarca mucho más que la productividad; su trabajo central es la inteligencia emocional.",
+            "Incorrecto. Goleman no se centró exclusivamente en la infancia; su enfoque es amplio.",
+            "Incorrecto. Goleman es psicólogo y periodista científico, no filósofo.",
+          ],
+          hint: "Recuerda quién escribió sobre la inteligencia emocional y su impacto en la vida personal y laboral.",
+        },
+        {
+          level: "Nivel 6",
+          question:
+            "Desde la inteligencia emocional, ¿qué habilidad es clave en el trabajo?",
+          answers: [
+            "Ocultar lo que se siente para evitar conflictos.",
+            "Reconocer las emociones propias y responder con mayor conciencia.",
+            "Evitar conversar cuando hay desacuerdos.",
+            "Hacer siempre lo que los demás esperan.",
+          ],
+          correct: 1,
+          explanation:
+            "La inteligencia emocional destaca el reconocimiento de las propias emociones como base para responder de forma más consciente y efectiva.",
+          incorrectFeedback: [
+            "Incorrecto. Ocultar las emociones no favorece la inteligencia emocional; la supresión puede generar más conflicto.",
+            "",
+            "Incorrecto. Evitar conversar no resuelve el desacuerdo; la clave es comunicarse con conciencia emocional.",
+            "Incorrecto. Responder solo a las expectativas externas ignora el autoconocimiento emocional.",
+          ],
+          hint: "La base de la inteligencia emocional es el autoconocimiento: saber qué sentimos antes de actuar.",
+        },
+        {
+          level: "Nivel 7",
+          question:
+            "¿Cuál de estas situaciones muestra una respuesta emocional poco regulada?",
+          answers: [
+            "Escuchar una observación y pedir claridad.",
+            "Respirar antes de responder a una crítica.",
+            "Contestar impulsivamente porque se sintió ira.",
+            "Expresar una inconformidad con respeto.",
+          ],
+          correct: 2,
+          explanation:
+            "Responder de forma impulsiva ante la ira es un ejemplo de respuesta emocional no regulada, donde la emoción dirige la acción sin mediación consciente.",
+          incorrectFeedback: [
+            "Incorrecto. Pedir claridad es una respuesta regulada que favorece la comunicación.",
+            "Incorrecto. Respirar antes de responder es una estrategia de regulación emocional.",
+            "",
+            "Incorrecto. Expresar con respeto una inconformidad es una respuesta emocionalmente regulada.",
+          ],
+          hint: "Busca la opción donde la emoción impulsa la acción sin reflexión previa.",
+        },
+        {
+          level: "Nivel 8",
+          question:
+            "En un entorno laboral, sentir ira ante una situación injusta significa que:",
+          answers: [
+            "La persona está actuando mal.",
+            "La emoción puede estar señalando una afectación o inconformidad.",
+            "La persona no tiene inteligencia emocional.",
+            "La emoción debe ignorarse por completo.",
+          ],
+          correct: 1,
+          explanation:
+            "Las emociones como la ira tienen una función informativa: señalan que algo afecta al bienestar o a los valores de la persona.",
+          incorrectFeedback: [
+            "Incorrecto. Sentir ira no implica actuar mal; la emoción en sí no es el problema.",
+            "",
+            "Incorrecto. Sentir ira no significa carecer de inteligencia emocional; lo importante es cómo se gestiona.",
+            "Incorrecto. Ignorar las emociones no favorece la regulación; es mejor reconocerlas y comprenderlas.",
+          ],
+          hint: "Las emociones tienen una función: nos informan sobre lo que vivimos. ¿Qué podría estar indicando la ira?",
+        },
+        {
+          level: "Nivel 9",
+          question:
+            "¿Qué puede ocurrir cuando una persona no regula sus emociones en el trabajo?",
+          answers: [
+            "Mejora siempre su comunicación.",
+            "Puede reaccionar impulsivamente y aumentar los conflictos.",
+            "Toma decisiones más objetivas.",
+            "Nunca se afecta su desempeño.",
+          ],
+          correct: 1,
+          explanation:
+            "Sin regulación emocional, es más probable reaccionar de forma impulsiva, lo que puede deteriorar las relaciones y el clima laboral.",
+          incorrectFeedback: [
+            "Incorrecto. La falta de regulación no mejora la comunicación; tiende a generar malentendidos.",
+            "",
+            "Incorrecto. Sin regulación, las emociones pueden nublar la objetividad en la toma de decisiones.",
+            "Incorrecto. La desregulación emocional sí afecta el desempeño, las relaciones y el bienestar.",
+          ],
+          hint: "Piensa en qué ocurre cuando actuamos sin pausar a reflexionar sobre lo que sentimos.",
+        },
+        {
+          level: "Nivel 10",
+          question:
+            "¿Cuál de estas respuestas es más adecuada ante una crítica laboral?",
+          answers: [
+            '"No voy a aceptar ninguna observación."',
+            '"Prefiero no escuchar para no sentirme mal."',
+            '"Gracias por la observación, ¿podrías indicarme qué puedo mejorar?"',
+            '"Usted también comete errores."',
+          ],
+          correct: 2,
+          explanation:
+            "Agradecer la observación y pedir retroalimentación constructiva refleja una respuesta emocionalmente regulada, orientada al aprendizaje.",
+          incorrectFeedback: [
+            "Incorrecto. Rechazar cualquier observación impide el aprendizaje y refleja una actitud defensiva.",
+            "Incorrecto. Evitar escuchar es una estrategia de evasión, no de regulación emocional.",
+            "",
+            'Incorrecto. Responder con "usted también falla" desvía el foco y puede escalar el conflicto.',
+          ],
+          hint: "La respuesta regulada frente a una crítica implica apertura, escucha y orientación hacia la mejora.",
+        },
+        {
+          level: "Nivel 11",
+          question: "¿Qué significa hacer una pausa emocional?",
+          answers: [
+            "Detenerse antes de responder para identificar lo que se siente.",
+            "Alejarse siempre y no volver a hablar del tema.",
+            "Esperar a que otra persona resuelva el conflicto.",
+            "Evitar sentir emociones difíciles.",
+          ],
+          correct: 0,
+          explanation:
+            "La pausa emocional consiste en hacer una pausa consciente antes de responder, con el fin de identificar la emoción y elegir una respuesta más adecuada.",
+          incorrectFeedback: [
+            "",
+            "Incorrecto. La pausa no implica evitar el tema; es un espacio breve para reflexionar antes de actuar.",
+            "Incorrecto. La pausa es una acción personal activa, no una espera pasiva.",
+            "Incorrecto. La pausa no busca evitar las emociones, sino reconocerlas para gestionarlas mejor.",
+          ],
+          hint: "La pausa emocional es una herramienta de autorregulación: un momento breve entre el estímulo y la respuesta.",
+        },
+        {
+          level: "Nivel 12",
+          question:
+            'En la estrategia PAUSA emocional, ¿qué acción corresponde mejor a "Ubico la causa"?',
+          answers: [
+            "Me pregunto qué activó la emoción que estoy sintiendo.",
+            "Busco a quién responsabilizar por lo ocurrido.",
+            "Dejo pasar la situación sin pensar en ella.",
+            "Respondo rápido para no acumular malestar.",
+          ],
+          correct: 0,
+          explanation:
+            'La acción "Ubico la causa" implica identificar qué situación, pensamiento o estímulo generó la emoción, sin buscar culpables.',
+          incorrectFeedback: [
+            "",
+            "Incorrecto. Ubicar la causa no es buscar culpables; es identificar qué generó la emoción.",
+            "Incorrecto. Ignorar la situación no permite comprenderla ni regularla.",
+            "Incorrecto. Responder rápido sin reflexionar es contrario a la lógica de la pausa emocional.",
+          ],
+          hint: "Identificar la causa es un proceso interno de autoindagación: ¿qué detonó esta emoción en mí?",
+        },
+        {
+          level: "Nivel 13",
+          question:
+            "Desde la psicología cognitiva, una misma situación puede generar emociones diferentes porque:",
+          answers: [
+            "Todas las personas sienten exactamente igual.",
+            "La interpretación que hacemos influye en lo que sentimos.",
+            "Las emociones no tienen relación con los pensamientos.",
+            "La emoción siempre depende solo del lugar donde ocurre.",
+          ],
+          correct: 1,
+          explanation:
+            "La psicología cognitiva sostiene que no es la situación en sí la que genera la emoción, sino la interpretación o valoración que hacemos de ella.",
+          incorrectFeedback: [
+            "Incorrecto. Las personas interpretan las situaciones de forma diferente según su historia, valores y creencias.",
+            "",
+            "Incorrecto. Existe una relación estrecha entre pensamientos e emociones; los pensamientos influyen en lo que sentimos.",
+            "Incorrecto. El lugar es un factor contextual, no el único determinante de la emoción.",
+          ],
+          hint: "Piensa en el modelo cognitivo: situación → interpretación → emoción. ¿Qué paso intermedio marca la diferencia?",
+        },
+        {
+          level: "Nivel 14",
+          question:
+            "¿Cómo se relaciona la regulación emocional con la calidad de vida laboral?",
+          answers: [
+            "Ayuda a afrontar mejor el estrés, cuidar las relaciones y disminuir el desgaste.",
+            "Hace que el trabajo no tenga dificultades.",
+            "Garantiza que todas las personas estén felices todo el tiempo.",
+            "Evita que existan diferencias entre compañeros.",
+          ],
+          correct: 0,
+          explanation:
+            "La regulación emocional contribuye al bienestar laboral al mejorar la gestión del estrés, fortalecer las relaciones interpersonales y reducir el desgaste emocional.",
+          incorrectFeedback: [
+            "",
+            "Incorrecto. La regulación no elimina las dificultades; ayuda a afrontarlas de mejor manera.",
+            "Incorrecto. No garantiza felicidad constante, sino mayor capacidad de respuesta ante los desafíos.",
+            "Incorrecto. Las diferencias siempre existirán; la regulación ayuda a gestionarlas con más recursos.",
+          ],
+          hint: "Piensa en los beneficios concretos de manejar mejor las emociones en el día a día laboral.",
+        },
+        {
+          level: "Nivel 15",
+          question:
+            "¿Cuál sería una conclusión adecuada sobre la regulación emocional en el trabajo?",
+          answers: [
+            "Es una habilidad útil para responder mejor ante presión, conflicto y cambios.",
+            "Solo sirve para personas que tienen cargos directivos.",
+            "Consiste en no mostrar ninguna emoción.",
+            "Es importante únicamente en la vida personal, no en lo laboral.",
+          ],
+          correct: 0,
+          explanation:
+            "La regulación emocional es una habilidad transversal aplicable a cualquier rol laboral; permite responder con mayor conciencia ante situaciones de presión, conflicto o cambio.",
+          incorrectFeedback: [
+            "",
+            "Incorrecto. La regulación emocional es útil para cualquier persona, independientemente del cargo.",
+            "Incorrecto. Regulación no es supresión; se trata de gestionar las emociones, no de ocultarlas.",
+            "Incorrecto. Las emociones también se expresan y se gestionan en el contexto laboral, que es un espacio de interacción constante.",
+          ],
+          hint: "Piensa en para quién aplica esta habilidad y en qué contextos del trabajo puede ser útil.",
+        },
+      ];
+      const state = {
+        currentQuestion: 0,
+        score: 0,
+        timer: 30,
+        timerInterval: null,
+        usedFifty: false,
+        usedHint: false,
+        usedAudience: false,
+        answeredCorrectly: new Set(),
+        answeredWrong: new Set(),
+        attempts: Array(questions.length).fill(0),
+        locked: false,
+      };
+
+      const progressText = document.getElementById("progressText");
+      const levelText = document.getElementById("levelText");
+      const scoreText = document.getElementById("scoreText");
+      const accumulatedText = document.getElementById("accumulatedText");
+      const questionText = document.getElementById("questionText");
+      const answersContainer = document.getElementById("answersContainer");
+      const correctCount = document.getElementById("correctCount");
+      const timerEl = document.getElementById("timer");
+      const goalText = document.getElementById("goalText");
+      const pendingText = document.getElementById("pendingText");
+      const messageBox = document.getElementById("messageBox");
+      const attemptsText = document.getElementById("attemptsText");
+
+      const fiftyBtn = document.getElementById("fiftyBtn");
+      const hintBtn = document.getElementById("hintBtn");
+      const audienceBtn = document.getElementById("audienceBtn");
+      const showHintBtn = document.getElementById("showHintBtn");
+      const nextPendingBtn = document.getElementById("nextPendingBtn");
+      const studentName = document.getElementById("studentName");
+      const studentID = document.getElementById("studentID");
+      const sendResults = document.getElementById("sendResults");
+
+      const resultOverlay = document.getElementById("resultOverlay");
+      const finalTag = document.getElementById("finalTag");
+      const finalTitle = document.getElementById("finalTitle");
+      const finalMessage = document.getElementById("finalMessage");
+      const restartBtn = document.getElementById("restartBtn");
+      const closeBtn = document.getElementById("closeBtn");
+
+      const startOverlay = document.getElementById("startOverlay");
+      const startBtn = document.getElementById("startBtn");
+
+      const hintOverlay = document.getElementById("hintOverlay");
+      const hintTitle = document.getElementById("hintTitle");
+      const hintMessage = document.getElementById("hintMessage");
+      const hintSteps = document.getElementById("hintSteps");
+      const closeHintBtn = document.getElementById("closeHintBtn");
+
+      const registerOverlay = document.getElementById("registerOverlay");
+      const registerForm = document.getElementById("registerForm");
+      const registerBtn = document.getElementById("registerBtn");
+      const registerName = document.getElementById("registerName");
+      const registerDocument = document.getElementById("registerDocument");
+      const nameError = document.getElementById("nameError");
+      const documentError = document.getElementById("documentError");
+
+      const feedbackOverlay = document.getElementById("feedbackOverlay");
+      const feedbackTag = document.getElementById("feedbackTag");
+      const feedbackMessage = document.getElementById("feedbackMessage");
+      const closeFeedbackBtn = document.getElementById("closeFeedbackBtn");
+      let pendingEndGame = false;
+
+      function startTimer() {
+        clearInterval(state.timerInterval);
+        state.timer = 30;
+        timerEl.textContent = `${state.timer}s`;
+        state.timerInterval = setInterval(() => {
+          state.timer--;
+          timerEl.textContent = `${state.timer}s`;
+          if (state.timer <= 0) {
+            clearInterval(state.timerInterval);
+            autoFail();
+          }
+        }, 1000);
+      }
+
+      function loadQuestion(index = state.currentQuestion) {
+        state.currentQuestion = index;
+        state.locked = false;
+        state.usedFifty = false;
+        state.usedHint = false;
+        state.usedAudience = false;
+        fiftyBtn.disabled = false;
+        hintBtn.disabled = false;
+        audienceBtn.disabled = false;
+
+        const q = questions[index];
+        progressText.textContent = `Pregunta ${index + 1} de ${questions.length}`;
+        levelText.textContent = q.level;
+        scoreText.textContent = `Puntaje: ${state.score}`;
+        accumulatedText.textContent = `Acumuladas: ${state.answeredCorrectly.size}/${questions.length}`;
+        correctCount.textContent = state.answeredCorrectly.size;
+        pendingText.textContent =
+          questions.length - state.answeredCorrectly.size;
+        goalText.textContent =
+          index < 5
+            ? "Comprender conceptos"
+            : index < 10
+              ? "Analizar contextos"
+              : "Intervenir con criterio";
+        questionText.textContent = q.question;
+        attemptsText.textContent = `Intentos en esta pregunta: ${state.attempts[index]}`;
+
+        if (state.answeredCorrectly.has(index)) {
+          messageBox.innerHTML =
+            "<strong>Pregunta ya resuelta correctamente.</strong> Puedes revisarla o elegir otra pregunta pendiente.";
+        } else if (state.answeredWrong.has(index)) {
+          messageBox.innerHTML =
+            "<strong>Pregunta registrada como incorrecta.</strong> Puedes revisarla, pero ya quedó tomada como incorrecta en el acumulado.";
+        } else {
+          messageBox.innerHTML =
+            "Selecciona una opción. Esa selección se tomará como respuesta definitiva para esta pregunta. Si quieres, puedes revisar una ayuda conceptual antes de responder.";
+        }
+
+        answersContainer.innerHTML = "";
+        q.answers.forEach((answer, answerIndex) => {
+          const btn = document.createElement("button");
+          btn.className = "answer";
+          btn.innerHTML = `<strong>${String.fromCharCode(65 + answerIndex)}.</strong> ${answer}`;
+
+          if (
+            state.answeredCorrectly.has(index) ||
+            state.answeredWrong.has(index)
+          ) {
+            btn.disabled = true;
+            if (answerIndex === q.correct) btn.classList.add("correct");
+          } else {
+            btn.addEventListener("click", () => chooseAnswer(answerIndex));
+          }
+          answersContainer.appendChild(btn);
+        });
+
+        if (
+          !state.answeredCorrectly.has(index) &&
+          !state.answeredWrong.has(index)
+        ) {
+          startTimer();
+        } else {
+          clearInterval(state.timerInterval);
+          timerEl.textContent = "—";
+        }
+      }
+
+      function chooseAnswer(index) {
+        if (state.locked) return;
+        state.locked = true;
+        clearInterval(state.timerInterval);
+        revealAnswer(index);
+      }
+
+      function revealAnswer(index) {
+        const q = questions[state.currentQuestion];
+        const buttons = [...document.querySelectorAll(".answer")];
+        state.attempts[state.currentQuestion] += 1;
+        attemptsText.textContent = `Intentos en esta pregunta: ${state.attempts[state.currentQuestion]}`;
+
+        buttons.forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === q.correct) btn.classList.add("correct");
+          if (i === index && i !== q.correct) btn.classList.add("wrong");
+        });
+
+        if (index === q.correct) {
+          state.answeredCorrectly.add(state.currentQuestion);
+          const gained = 100;
+          state.score += gained;
+          scoreText.textContent = `Puntaje: ${state.score}`;
+          accumulatedText.textContent = `Acumuladas: ${state.answeredCorrectly.size}/${questions.length}`;
+          correctCount.textContent = state.answeredCorrectly.size;
+          pendingText.textContent =
+            questions.length - state.answeredCorrectly.size;
+          messageBox.innerHTML = `<strong>Correcto.</strong> ${q.explanation} <br><br>Ganaste <strong>${gained} puntos</strong> en esta pregunta.`;
+          feedbackTag.textContent = "¡Correcto!";
+          feedbackTag.style.cssText = "background: rgba(40, 199, 111, 0.16); color: var(--success);";
+          feedbackMessage.innerHTML = `${q.explanation}<br><br>Ganaste <strong>${gained} puntos</strong> en esta pregunta.`;
+          feedbackOverlay.style.display = "flex";
+        } else {
+          state.answeredWrong.add(state.currentQuestion);
+          const reason =
+            q.incorrectFeedback[index] ||
+            "Esta opción no corresponde de manera precisa al concepto trabajado.";
+          messageBox.innerHTML = `<strong>Respuesta incorrecta.</strong> ${reason} <br><br><strong>Retroalimentación conceptual:</strong> ${q.explanation}`;
+          feedbackTag.textContent = "Respuesta incorrecta";
+          feedbackTag.style.cssText = "background: rgba(255, 91, 91, 0.16); color: var(--danger);";
+          feedbackMessage.innerHTML = `${reason}<br><br><strong>Retroalimentación conceptual:</strong> ${q.explanation}`;
+          feedbackOverlay.style.display = "flex";
+        }
+
+        if (state.answeredCorrectly.size === questions.length) {
+          pendingEndGame = true;
+        }
+      }
+
+      function autoFail() {
+        const q = questions[state.currentQuestion];
+        const buttons = [...document.querySelectorAll(".answer")];
+        state.attempts[state.currentQuestion] += 1;
+        attemptsText.textContent = `Intentos en esta pregunta: ${state.attempts[state.currentQuestion]}`;
+        state.answeredWrong.add(state.currentQuestion);
+        buttons.forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === q.correct) btn.classList.add("correct");
+        });
+        messageBox.innerHTML = `<strong>Tiempo agotado.</strong> La pregunta se registra como incorrecta por no responder a tiempo. <br><br><strong>Retroalimentación conceptual:</strong> ${q.explanation}`;
+        feedbackTag.textContent = "Tiempo agotado";
+        feedbackTag.style.cssText = "background: rgba(255, 91, 91, 0.16); color: var(--danger);";
+        feedbackMessage.innerHTML = `La pregunta se registra como incorrecta por no responder a tiempo.<br><br><strong>Retroalimentación conceptual:</strong> ${q.explanation}`;
+        feedbackOverlay.style.display = "flex";
+      }
+
+      function useFifty() {
+        if (
+          state.usedFifty ||
+          state.locked ||
+          state.answeredCorrectly.has(state.currentQuestion) ||
+          state.answeredWrong.has(state.currentQuestion)
+        )
+          return;
+        state.usedFifty = true;
+        fiftyBtn.disabled = true;
+        const q = questions[state.currentQuestion];
+        const buttons = [...document.querySelectorAll(".answer")];
+        const wrongIndexes = q.answers
+          .map((_, i) => i)
+          .filter((i) => i !== q.correct)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 2);
+
+        wrongIndexes.forEach((i) => {
+          buttons[i].classList.add("faded");
+          buttons[i].disabled = true;
+        });
+
+        messageBox.innerHTML =
+          "<strong>50/50 activado.</strong> Se eliminaron dos opciones incorrectas para facilitar el análisis antes de responder.";
+      }
+
+      function useHint() {
+        if (
+          state.usedHint ||
+          state.answeredCorrectly.has(state.currentQuestion) ||
+          state.answeredWrong.has(state.currentQuestion)
+        )
+          return;
+        state.usedHint = true;
+        hintBtn.disabled = true;
+        openHintModal(questions[state.currentQuestion]);
+      }
+
+      function useAudience() {
+        if (
+          state.usedAudience ||
+          state.answeredCorrectly.has(state.currentQuestion) ||
+          state.answeredWrong.has(state.currentQuestion)
+        )
+          return;
+        state.usedAudience = true;
+        audienceBtn.disabled = true;
+        const q = questions[state.currentQuestion];
+        const labels = ["A", "B", "C", "D"];
+        messageBox.innerHTML = `<strong>Consulta al grupo.</strong> La tendencia del grupo apunta a la opción <strong>${labels[q.correct]}</strong> como la más sólida conceptualmente.`;
+      }
+
+      function openHintModal(q) {
+        const fallbackTitle = "Pista de apoyo";
+        const fallbackHint =
+          "Revisa el concepto central de esta pregunta antes de responder.";
+        hintTitle.textContent = q.clueTitle || fallbackTitle;
+        hintMessage.textContent = q.hint || fallbackHint;
+        const steps = Array.isArray(q.clueSteps) ? q.clueSteps : [];
+        hintSteps.innerHTML = steps
+          .map((step) => `<div class="hint-step">${step}</div>`)
+          .join("");
+        hintOverlay.style.display = "flex";
+      }
+
+      function switchQuestion(index) {
+        clearInterval(state.timerInterval);
+        loadQuestion(index);
+      }
+
+      function findNextPending() {
+        for (let i = 0; i < questions.length; i++) {
+          if (!state.answeredCorrectly.has(i) && !state.answeredWrong.has(i))
+            return i;
+        }
+        return null;
+      }
+
+      function endGame(completed) {
+        clearInterval(state.timerInterval);
+        resultOverlay.style.display = "flex";
+        const totalAnswered =
+          state.answeredCorrectly.size + state.answeredWrong.size;
+        if (completed || totalAnswered === questions.length) {
+          finalTag.textContent = "Simulador finalizado";
+          finalTitle.textContent = "Recorrido completado";
+          finalMessage.textContent = `Obtuviste ${state.answeredCorrectly.size} respuestas correctas de ${questions.length} y acumulaste ${state.score} puntos. El resultado final te permite identificar fortalezas y conceptos que conviene reforzar en el taller.`;
+        } else {
+          finalTag.textContent = "Progreso actual";
+          finalTitle.textContent = "Vas avanzando";
+          finalMessage.textContent = `Hasta ahora acumulas ${state.answeredCorrectly.size} respuestas correctas, ${state.answeredWrong.size} incorrectas y ${state.score} puntos.`;
+        }
+      }
+
+      function restartGame() {
+        state.currentQuestion = 0;
+        state.score = 0;
+        state.timer = 30;
+        state.usedFifty = false;
+        state.usedHint = false;
+        state.usedAudience = false;
+        state.answeredCorrectly = new Set();
+        state.answeredWrong = new Set();
+        state.attempts = Array(questions.length).fill(0);
+        state.locked = false;
+        resultOverlay.style.display = "none";
+        hintOverlay.style.display = "none";
+        feedbackOverlay.style.display = "none";
+        startOverlay.style.display = "none";
+        registerOverlay.style.display = "flex";
+        pendingEndGame = false;
+
+        // Limpiar campos de registro
+        registerName.value = "";
+        registerDocument.value = "";
+        nameError.classList.remove("show");
+        documentError.classList.remove("show");
+      }
+
+      fiftyBtn.addEventListener("click", useFifty);
+      hintBtn.addEventListener("click", useHint);
+      audienceBtn.addEventListener("click", useAudience);
+      showHintBtn.addEventListener("click", () =>
+        openHintModal(questions[state.currentQuestion]),
+      );
+      nextPendingBtn.addEventListener("click", () => {
+        const next = findNextPending();
+        if (next !== null) loadQuestion(next);
+        else endGame(false);
+      });
+      restartBtn.addEventListener("click", restartGame);
+      closeBtn.addEventListener("click", () => {
+        resultOverlay.style.display = "none";
+      });
+      startBtn.addEventListener("click", () => {
+        startOverlay.style.display = "none";
+        loadQuestion(0);
+      });
+      closeHintBtn.addEventListener("click", () => {
+        hintOverlay.style.display = "none";
+      });
+      closeFeedbackBtn.addEventListener("click", () => {
+        feedbackOverlay.style.display = "none";
+        if (pendingEndGame) {
+          pendingEndGame = false;
+          endGame(true);
+        } else {
+          const next = findNextPending();
+          if (next !== null) loadQuestion(next);
+          else endGame(false);
+        }
+      });
+
+      // ========== MÓDULO DE REGISTRO ==========
+      function validateRegisterForm() {
+        let isValid = true;
+        const name = registerName.value.trim();
+        const document = registerDocument.value.trim();
+
+        // Validar nombre
+        if (!name) {
+          nameError.classList.add("show");
+          isValid = false;
+        } else {
+          nameError.classList.remove("show");
+        }
+
+        // Validar documento
+        if (!document) {
+          documentError.classList.add("show");
+          isValid = false;
+        } else {
+          documentError.classList.remove("show");
+        }
+
+        return isValid;
+      }
+
+      registerBtn.addEventListener("click", () => {
+        if (!validateRegisterForm()) return;
+
+        // Guardar datos
+        const name = registerName.value.trim();
+        const document = registerDocument.value.trim();
+        localStorage.setItem("quiz_name", name);
+        localStorage.setItem("quiz_id", document);
+
+        // Actualizar campos en sidebar
+        studentName.value = name;
+        studentID.value = document;
+
+        // Mostrar siguiente overlay
+        registerOverlay.style.display = "none";
+        startOverlay.style.display = "flex";
+      });
+
+      // Permitir Enter para enviar el formulario
+      registerForm.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          registerBtn.click();
+        }
+      });
+
+      // Limpiar errores mientras se escribe
+      registerName.addEventListener("input", () => {
+        if (registerName.value.trim()) {
+          nameError.classList.remove("show");
+        }
+      });
+
+      registerDocument.addEventListener("input", () => {
+        if (registerDocument.value.trim()) {
+          documentError.classList.remove("show");
+        }
+      });
+
+      // ========== GUARDAR DATOS EN LOCALSTORAGE ==========
+      studentName.addEventListener("input", (e) => {
+        localStorage.setItem("quiz_name", e.target.value);
+      });
+      studentID.addEventListener("input", (e) => {
+        localStorage.setItem("quiz_id", e.target.value);
+      });
+
+      // Cargar datos guardados
+      const savedName = localStorage.getItem("quiz_name") || "";
+      const savedID = localStorage.getItem("quiz_id") || "";
+      studentName.value = savedName;
+      studentID.value = savedID;
+
+      // ========== ENVIAR RESULTADOS A GOOGLE FORMS ==========
+      sendResults.addEventListener("click", () => {
+        const name = studentName.value.trim();
+        const sid = studentID.value.trim();
+
+        if (!name || !sid) {
+          if (
+            !confirm(
+              "No registraste Nombre e ID. ¿Deseas continuar sin esos datos?",
+            )
+          ) {
+            return;
+          }
+        }
+
+        const maxScore = questions.length * 100;
+        const percentage =
+          maxScore > 0 ? Math.round((state.score / maxScore) * 100) : 0;
+
+        const params = new URLSearchParams();
+        if (name) params.set(ENTRY.Nombre_Completo, name);
+        if (sid) params.set(ENTRY.ID_Alumno, sid);
+        params.set(ENTRY.Nombre_Actividad, "¿Cuánto sabes de regulación emocional?");
+        params.set(ENTRY.Puntaje, String(state.score));
+        params.set(ENTRY.Maximo_Puntos, String(maxScore));
+        params.set(ENTRY.Porcentaje, String(percentage) + "%");
+
+        const url = FORM_BASE + "?" + params.toString();
+        window.open(url, "_blank");
+        alert("Se abrirá el formulario con tus resultados. ¡Gracias!");
+      });
+
+    </script>
+  </body>
+</html>
