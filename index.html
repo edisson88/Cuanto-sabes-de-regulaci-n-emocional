@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿Cuánto sabes de regulación emocional?</title>
+    <title>¿Quién quiere ser millonario? · Principios éticos y deontológicos</title>
     <style>
       :root {
         --bg: #0b1020;
@@ -626,7 +626,7 @@
     <div class="start-overlay" id="startOverlay" style="display: none">
       <div class="start-box">
         <div class="tag">Taller interactivo</div>
-        <h2>¿Cuánto sabes de regulación emocional?</h2>
+        <h2>¿Quién quiere ser millonario?</h2>
         <p>
           Este simulador permite elegir preguntas libremente, acumular
           respuestas correctas y usar ayudas conceptuales antes de responder.
@@ -643,7 +643,7 @@
             responder con el botón de ayuda.
           </div>
           <div class="hint-step">
-            <strong>Meta:</strong> completar las 15 preguntas acumulando la
+            <strong>Meta:</strong> completar las 20 preguntas acumulando la
             mayor cantidad de respuestas correctas.
           </div>
         </div>
@@ -657,20 +657,19 @@
       <section class="card">
         <div class="hero">
           <div class="eyebrow">Simulador interactivo para taller</div>
-          <h1>¿Cuánto sabes de regulación emocional?</h1>
+          <h1>¿Quién quiere ser millonario?</h1>
           <p class="subtitle">
-            Un juego tipo concurso para repasar qué es la regulación emocional,
-            sus autores de referencia, sus estrategias clave y su aplicación
-            en el entorno laboral.
+            Principios éticos y deontológicos aplicados a la comunicación de
+            resultados psicológicos.
           </p>
         </div>
 
         <div class="stage">
           <div class="topbar">
-            <div class="pill" id="progressText">Pregunta 1 de 15</div>
+            <div class="pill" id="progressText">Pregunta 1 de 20</div>
             <div class="pill" id="levelText">Nivel 1 · Apertura conceptual</div>
             <div class="pill" id="scoreText">Puntaje: 0</div>
-            <div class="pill" id="accumulatedText">Acumuladas: 0/15</div>
+            <div class="pill" id="accumulatedText">Acumuladas: 0/20</div>
           </div>
 
           <div class="question-box">
@@ -715,7 +714,7 @@
             </div>
             <div class="meta-box">
               <div class="meta-title">Pendientes</div>
-              <div class="meta-value" id="pendingText">15</div>
+              <div class="meta-value" id="pendingText">20</div>
             </div>
           </div>
         </div>
@@ -825,313 +824,399 @@
       const questions = [
         {
           level: "Nivel 1",
-          question: "¿Qué se entiende por regulación emocional?",
+          question: "Según la presentación, ¿qué son las CIPAS?",
           answers: [
-            "Evitar expresar emociones en el trabajo.",
-            "Reconocer, comprender y manejar las emociones para responder mejor.",
-            "Sentir únicamente emociones positivas.",
-            "Actuar según la emoción del momento.",
+            "Espacios exclusivamente evaluativos.",
+            "Comunidades de interacción académica y social.",
+            "Grupos de investigación formal.",
+            "Tutorías individuales.",
           ],
           correct: 1,
           explanation:
-            "La regulación emocional consiste en reconocer, comprender y manejar las emociones para dar respuestas más conscientes y adecuadas al contexto.",
+            "Las CIPAS son comunidades de interacción académica y social que favorecen el aprendizaje colaborativo.",
           incorrectFeedback: [
-            "Incorrecto. Evitar expresar emociones no equivale a regularlas; la regulación implica reconocerlas y manejarlas.",
+            "Incorrecto. Las CIPAS no son solo espacios de evaluación; su centro es la interacción académica y social.",
             "",
-            "Incorrecto. La regulación no busca eliminar emociones negativas, sino manejar todas las emociones de forma adecuada.",
-            "Incorrecto. Actuar impulsivamente según la emoción es precisamente lo opuesto a la regulación emocional.",
+            "Incorrecto. No son grupos de investigación formal, sino comunidades de interacción académica y social.",
+            "Incorrecto. No son tutorías individuales; implican interacción grupal.",
           ],
-          hint: "Piensa en qué habilidad permite reconocer y gestionar lo que sentimos para responder de manera más consciente.",
+          hint: "Piensa en un espacio colectivo donde se aprende interactuando con otros.",
         },
         {
           level: "Nivel 2",
-          question: "¿Cuál es una idea central de la regulación emocional?",
+          question:
+            "¿Cuál es uno de los enfoques de las CIPAS dinamizadas por el H-mediador?",
           answers: [
-            "Las emociones deben desaparecer para tomar buenas decisiones.",
-            "Todas las emociones son negativas cuando aparecen en el trabajo.",
-            "Las emociones son válidas, pero la forma de responder puede regularse.",
-            "La mejor opción siempre es guardar silencio.",
-          ],
-          correct: 2,
-          explanation:
-            "Las emociones son válidas e informativas; lo que se puede regular es la forma en que respondemos a ellas.",
-          incorrectFeedback: [
-            "Incorrecto. Las emociones no deben desaparecer; son fuentes de información valiosa.",
-            "Incorrecto. Las emociones en sí no son negativas; depende de cómo se gestionan.",
-            "",
-            "Incorrecto. Guardar silencio no es siempre la respuesta adecuada; la regulación implica una respuesta consciente.",
-          ],
-          hint: "Recuerda que las emociones tienen un propósito; la clave está en cómo respondemos ante ellas.",
-        },
-        {
-          level: "Nivel 3",
-          question: "¿Quién es James Gross?",
-          answers: [
-            "Un psicólogo reconocido por estudiar la regulación emocional.",
-            "Un autor que estudió únicamente la motivación laboral.",
-            "Un médico dedicado al estudio del sueño.",
-            "Un pedagogo centrado en la evaluación académica.",
+            "Aprendizaje significativo.",
+            "Competencia individual.",
+            "Memorización.",
+            "Evaluación sumativa.",
           ],
           correct: 0,
           explanation:
-            "James Gross es un psicólogo ampliamente reconocido por sus investigaciones sobre la regulación emocional y sus estrategias.",
+            "Las CIPAS dinamizadas por el H-mediador se orientan al aprendizaje significativo, conectando los nuevos saberes con la experiencia.",
           incorrectFeedback: [
             "",
-            "Incorrecto. Gross no se centró solo en motivación laboral; su trabajo abarca la regulación emocional.",
-            "Incorrecto. James Gross es psicólogo, no médico, y su campo es la regulación emocional.",
-            "Incorrecto. Gross no es pedagogo; es un referente en psicología emocional.",
+            "Incorrecto. Las CIPAS privilegian la colaboración, no la competencia individual.",
+            "Incorrecto. La memorización no es el enfoque; se busca construir sentido.",
+            "Incorrecto. La evaluación sumativa no es el enfoque central de las CIPAS.",
           ],
-          hint: "Piensa en el autor más citado en estudios sobre cómo las personas manejan sus emociones.",
+          hint: "Busca el enfoque que conecta lo nuevo con lo que ya se sabe.",
+        },
+        {
+          level: "Nivel 3",
+          question:
+            "¿Qué norma constituye el marco legal central presentado para el ejercicio de la psicología en Colombia?",
+          answers: [
+            "Ley 100 de 1993.",
+            "Ley 1090 de 2006.",
+            "Ley 30 de 1992.",
+            "Ley 115 de 1994.",
+          ],
+          correct: 1,
+          explanation:
+            "La Ley 1090 de 2006 reglamenta el ejercicio de la profesión de psicología y dicta el Código Deontológico y Bioético.",
+          incorrectFeedback: [
+            "Incorrecto. La Ley 100 de 1993 regula el sistema de seguridad social.",
+            "",
+            "Incorrecto. La Ley 30 de 1992 organiza la educación superior.",
+            "Incorrecto. La Ley 115 de 1994 es la Ley General de Educación.",
+          ],
+          hint: "Es la ley que contiene el Código Deontológico y Bioético del psicólogo.",
         },
         {
           level: "Nivel 4",
           question:
-            "Según James Gross, la regulación emocional permite principalmente:",
+            "Según la presentación, ¿qué orienta la ética profesional en psicología?",
           answers: [
-            "Controlar todo lo que ocurre alrededor.",
-            "Influir en cómo se experimentan y expresan las emociones.",
-            "Evitar cualquier emoción intensa.",
-            "Hacer que los demás cambien su conducta.",
+            "Solo la investigación.",
+            "Las decisiones y conductas en la praxis profesional.",
+            "La administración institucional.",
+            "Únicamente la aplicación de pruebas.",
           ],
           correct: 1,
           explanation:
-            "Según Gross, la regulación emocional permite influir en el tipo, intensidad, momento y expresión de las emociones.",
+            "La ética profesional orienta las decisiones y conductas del psicólogo en toda su praxis profesional.",
           incorrectFeedback: [
-            "Incorrecto. La regulación emocional no implica controlar el entorno externo.",
+            "Incorrecto. La ética no se limita a la investigación; abarca toda la práctica.",
             "",
-            "Incorrecto. No se trata de evitar emociones intensas, sino de manejar cómo se viven y expresan.",
-            "Incorrecto. La regulación emocional se enfoca en la propia experiencia, no en cambiar a los demás.",
+            "Incorrecto. La administración institucional no es el foco de la ética profesional.",
+            "Incorrecto. La ética abarca mucho más que la aplicación de pruebas.",
           ],
-          hint: "Gross se centró en la capacidad interna de modular la experiencia y expresión emocional.",
+          hint: "Piensa en el alcance: ¿se limita a una tarea o abarca todo el ejercicio profesional?",
         },
         {
           level: "Nivel 5",
-          question: "¿Quién es Daniel Goleman?",
+          question:
+            "¿Qué función cumplen los Tribunales Deontológicos y Bioéticos según la presentación?",
           answers: [
-            "Un investigador reconocido por hablar de inteligencia emocional.",
-            "Un autor especializado solo en productividad empresarial.",
-            "Un psicólogo centrado únicamente en la infancia.",
-            "Un filósofo que explicó la felicidad laboral.",
+            "Elaborar todas las pruebas psicológicas.",
+            "Sancionar faltas deontológicas y bioéticas.",
+            "Otorgar títulos profesionales.",
+            "Definir salarios profesionales.",
           ],
-          correct: 0,
+          correct: 1,
           explanation:
-            "Daniel Goleman es conocido principalmente por popularizar el concepto de inteligencia emocional y su aplicación en distintos contextos.",
+            "Los Tribunales Deontológicos y Bioéticos investigan y sancionan las faltas deontológicas y bioéticas de los profesionales.",
           incorrectFeedback: [
+            "Incorrecto. Los tribunales no elaboran pruebas psicológicas.",
             "",
-            "Incorrecto. Goleman abarca mucho más que la productividad; su trabajo central es la inteligencia emocional.",
-            "Incorrecto. Goleman no se centró exclusivamente en la infancia; su enfoque es amplio.",
-            "Incorrecto. Goleman es psicólogo y periodista científico, no filósofo.",
+            "Incorrecto. Los títulos los otorgan las instituciones de educación superior.",
+            "Incorrecto. Los tribunales no definen salarios.",
           ],
-          hint: "Recuerda quién escribió sobre la inteligencia emocional y su impacto en la vida personal y laboral.",
+          hint: "Un tribunal juzga conductas; piensa en qué tipo de conductas.",
         },
         {
           level: "Nivel 6",
           question:
-            "Desde la inteligencia emocional, ¿qué habilidad es clave en el trabajo?",
-          answers: [
-            "Ocultar lo que se siente para evitar conflictos.",
-            "Reconocer las emociones propias y responder con mayor conciencia.",
-            "Evitar conversar cuando hay desacuerdos.",
-            "Hacer siempre lo que los demás esperan.",
-          ],
+            "¿Qué principio busca que la información aporte comprensión y posibilidades de acción?",
+          answers: ["Justicia.", "Beneficencia.", "Confidencialidad.", "Autonomía."],
           correct: 1,
           explanation:
-            "La inteligencia emocional destaca el reconocimiento de las propias emociones como base para responder de forma más consciente y efectiva.",
+            "La beneficencia busca que la comunicación de resultados beneficie a la persona, aportando comprensión y posibilidades de acción.",
           incorrectFeedback: [
-            "Incorrecto. Ocultar las emociones no favorece la inteligencia emocional; la supresión puede generar más conflicto.",
+            "Incorrecto. La justicia se relaciona con el trato equitativo, no con aportar beneficio.",
             "",
-            "Incorrecto. Evitar conversar no resuelve el desacuerdo; la clave es comunicarse con conciencia emocional.",
-            "Incorrecto. Responder solo a las expectativas externas ignora el autoconocimiento emocional.",
+            "Incorrecto. La confidencialidad protege la información, pero no busca por sí misma aportar comprensión.",
+            "Incorrecto. La autonomía se centra en que la persona decida, no en el beneficio de la información.",
           ],
-          hint: "La base de la inteligencia emocional es el autoconocimiento: saber qué sentimos antes de actuar.",
+          hint: "¿Qué principio se orienta a hacer el bien a la persona evaluada?",
         },
         {
           level: "Nivel 7",
           question:
-            "¿Cuál de estas situaciones muestra una respuesta emocional poco regulada?",
-          answers: [
-            "Escuchar una observación y pedir claridad.",
-            "Respirar antes de responder a una crítica.",
-            "Contestar impulsivamente porque se sintió ira.",
-            "Expresar una inconformidad con respeto.",
-          ],
+            "¿Qué principio exige evitar estigmas, alarmas innecesarias y conclusiones absolutas?",
+          answers: ["Beneficencia.", "Justicia.", "No maleficencia.", "Autonomía."],
           correct: 2,
           explanation:
-            "Responder de forma impulsiva ante la ira es un ejemplo de respuesta emocional no regulada, donde la emoción dirige la acción sin mediación consciente.",
+            "La no maleficencia exige no causar daño: evitar estigmas, alarmas innecesarias y conclusiones absolutas.",
           incorrectFeedback: [
-            "Incorrecto. Pedir claridad es una respuesta regulada que favorece la comunicación.",
-            "Incorrecto. Respirar antes de responder es una estrategia de regulación emocional.",
+            "Incorrecto. La beneficencia busca hacer el bien; evitar el daño corresponde a la no maleficencia.",
+            "Incorrecto. La justicia se refiere a la equidad en el trato.",
             "",
-            "Incorrecto. Expresar con respeto una inconformidad es una respuesta emocionalmente regulada.",
+            "Incorrecto. La autonomía se refiere a la participación y decisión de la persona.",
           ],
-          hint: "Busca la opción donde la emoción impulsa la acción sin reflexión previa.",
+          hint: "Piensa en el principio de «primero, no hacer daño».",
         },
         {
           level: "Nivel 8",
           question:
-            "En un entorno laboral, sentir ira ante una situación injusta significa que:",
-          answers: [
-            "La persona está actuando mal.",
-            "La emoción puede estar señalando una afectación o inconformidad.",
-            "La persona no tiene inteligencia emocional.",
-            "La emoción debe ignorarse por completo.",
-          ],
-          correct: 1,
+            "¿Qué principio implica que la persona comprenda sus resultados y participe en las decisiones posteriores?",
+          answers: ["Autonomía.", "Justicia.", "Veracidad.", "Objetividad."],
+          correct: 0,
           explanation:
-            "Las emociones como la ira tienen una función informativa: señalan que algo afecta al bienestar o a los valores de la persona.",
+            "La autonomía implica que la persona comprenda sus resultados y participe activamente en las decisiones que se deriven de ellos.",
           incorrectFeedback: [
-            "Incorrecto. Sentir ira no implica actuar mal; la emoción en sí no es el problema.",
             "",
-            "Incorrecto. Sentir ira no significa carecer de inteligencia emocional; lo importante es cómo se gestiona.",
-            "Incorrecto. Ignorar las emociones no favorece la regulación; es mejor reconocerlas y comprenderlas.",
+            "Incorrecto. La justicia se relaciona con la equidad, no con la participación en decisiones.",
+            "Incorrecto. La veracidad trata de decir la verdad, no de decidir.",
+            "Incorrecto. La objetividad se refiere a la imparcialidad del análisis.",
           ],
-          hint: "Las emociones tienen una función: nos informan sobre lo que vivimos. ¿Qué podría estar indicando la ira?",
+          hint: "¿Qué principio reconoce a la persona como protagonista de sus decisiones?",
         },
         {
           level: "Nivel 9",
           question:
-            "¿Qué puede ocurrir cuando una persona no regula sus emociones en el trabajo?",
+            "En el filtro ético, ¿qué pregunta corresponde a la pertinencia?",
           answers: [
-            "Mejora siempre su comunicación.",
-            "Puede reaccionar impulsivamente y aumentar los conflictos.",
-            "Toma decisiones más objetivas.",
-            "Nunca se afecta su desempeño.",
+            "¿Este dato responde al motivo de evaluación?",
+            "¿La prueba fue extensa?",
+            "¿Quién aplicó el instrumento?",
+            "¿Cuánto tiempo duró la sesión?",
           ],
-          correct: 1,
+          correct: 0,
           explanation:
-            "Sin regulación emocional, es más probable reaccionar de forma impulsiva, lo que puede deteriorar las relaciones y el clima laboral.",
+            "La pertinencia verifica si cada dato responde al motivo de evaluación; lo que no responde a él no debería comunicarse.",
           incorrectFeedback: [
-            "Incorrecto. La falta de regulación no mejora la comunicación; tiende a generar malentendidos.",
             "",
-            "Incorrecto. Sin regulación, las emociones pueden nublar la objetividad en la toma de decisiones.",
-            "Incorrecto. La desregulación emocional sí afecta el desempeño, las relaciones y el bienestar.",
+            "Incorrecto. La extensión de la prueba no define si un dato es pertinente.",
+            "Incorrecto. Quién aplicó el instrumento no determina la pertinencia del dato.",
+            "Incorrecto. La duración de la sesión no se relaciona con la pertinencia.",
           ],
-          hint: "Piensa en qué ocurre cuando actuamos sin pausar a reflexionar sobre lo que sentimos.",
+          hint: "Pertinente es lo que tiene relación con el propósito de la evaluación.",
         },
         {
           level: "Nivel 10",
-          question:
-            "¿Cuál de estas respuestas es más adecuada ante una crítica laboral?",
+          question: "Para favorecer la comprensión, ¿qué propone la presentación?",
           answers: [
-            '"No voy a aceptar ninguna observación."',
-            '"Prefiero no escuchar para no sentirme mal."',
-            '"Gracias por la observación, ¿podrías indicarme qué puedo mejorar?"',
-            '"Usted también comete errores."',
-          ],
-          correct: 2,
-          explanation:
-            "Agradecer la observación y pedir retroalimentación constructiva refleja una respuesta emocionalmente regulada, orientada al aprendizaje.",
-          incorrectFeedback: [
-            "Incorrecto. Rechazar cualquier observación impide el aprendizaje y refleja una actitud defensiva.",
-            "Incorrecto. Evitar escuchar es una estrategia de evasión, no de regulación emocional.",
-            "",
-            'Incorrecto. Responder con "usted también falla" desvía el foco y puede escalar el conflicto.',
-          ],
-          hint: "La respuesta regulada frente a una crítica implica apertura, escucha y orientación hacia la mejora.",
-        },
-        {
-          level: "Nivel 11",
-          question: "¿Qué significa hacer una pausa emocional?",
-          answers: [
-            "Detenerse antes de responder para identificar lo que se siente.",
-            "Alejarse siempre y no volver a hablar del tema.",
-            "Esperar a que otra persona resuelva el conflicto.",
-            "Evitar sentir emociones difíciles.",
-          ],
-          correct: 0,
-          explanation:
-            "La pausa emocional consiste en hacer una pausa consciente antes de responder, con el fin de identificar la emoción y elegir una respuesta más adecuada.",
-          incorrectFeedback: [
-            "",
-            "Incorrecto. La pausa no implica evitar el tema; es un espacio breve para reflexionar antes de actuar.",
-            "Incorrecto. La pausa es una acción personal activa, no una espera pasiva.",
-            "Incorrecto. La pausa no busca evitar las emociones, sino reconocerlas para gestionarlas mejor.",
-          ],
-          hint: "La pausa emocional es una herramienta de autorregulación: un momento breve entre el estímulo y la respuesta.",
-        },
-        {
-          level: "Nivel 12",
-          question:
-            'En la estrategia PAUSA emocional, ¿qué acción corresponde mejor a "Ubico la causa"?',
-          answers: [
-            "Me pregunto qué activó la emoción que estoy sintiendo.",
-            "Busco a quién responsabilizar por lo ocurrido.",
-            "Dejo pasar la situación sin pensar en ella.",
-            "Respondo rápido para no acumular malestar.",
-          ],
-          correct: 0,
-          explanation:
-            'La acción "Ubico la causa" implica identificar qué situación, pensamiento o estímulo generó la emoción, sin buscar culpables.',
-          incorrectFeedback: [
-            "",
-            "Incorrecto. Ubicar la causa no es buscar culpables; es identificar qué generó la emoción.",
-            "Incorrecto. Ignorar la situación no permite comprenderla ni regularla.",
-            "Incorrecto. Responder rápido sin reflexionar es contrario a la lógica de la pausa emocional.",
-          ],
-          hint: "Identificar la causa es un proceso interno de autoindagación: ¿qué detonó esta emoción en mí?",
-        },
-        {
-          level: "Nivel 13",
-          question:
-            "Desde la psicología cognitiva, una misma situación puede generar emociones diferentes porque:",
-          answers: [
-            "Todas las personas sienten exactamente igual.",
-            "La interpretación que hacemos influye en lo que sentimos.",
-            "Las emociones no tienen relación con los pensamientos.",
-            "La emoción siempre depende solo del lugar donde ocurre.",
+            "Mantener todos los tecnicismos.",
+            "Traducir tecnicismos y comprobar comprensión.",
+            "Entregar únicamente el informe escrito.",
+            "Evitar preguntas del evaluado.",
           ],
           correct: 1,
           explanation:
-            "La psicología cognitiva sostiene que no es la situación en sí la que genera la emoción, sino la interpretación o valoración que hacemos de ella.",
+            "Para favorecer la comprensión se deben traducir los tecnicismos a un lenguaje claro y comprobar que la persona entendió.",
           incorrectFeedback: [
-            "Incorrecto. Las personas interpretan las situaciones de forma diferente según su historia, valores y creencias.",
+            "Incorrecto. Los tecnicismos dificultan la comprensión si no se explican.",
             "",
-            "Incorrecto. Existe una relación estrecha entre pensamientos e emociones; los pensamientos influyen en lo que sentimos.",
-            "Incorrecto. El lugar es un factor contextual, no el único determinante de la emoción.",
+            "Incorrecto. El informe escrito solo no garantiza la comprensión; la devolución debe ser dialogada.",
+            "Incorrecto. Las preguntas del evaluado ayudan a verificar su comprensión.",
           ],
-          hint: "Piensa en el modelo cognitivo: situación → interpretación → emoción. ¿Qué paso intermedio marca la diferencia?",
+          hint: "Piensa en cómo asegurarte de que la persona realmente entendió.",
+        },
+        {
+          level: "Nivel 11",
+          question: "¿Qué debe analizarse desde el criterio de impacto?",
+          answers: [
+            "El número de páginas del informe.",
+            "El posible efecto de la forma de comunicar la información.",
+            "La duración de la prueba.",
+            "La cantidad de instrumentos.",
+          ],
+          correct: 1,
+          explanation:
+            "El criterio de impacto analiza el posible efecto que la forma de comunicar la información puede tener en la persona.",
+          incorrectFeedback: [
+            "Incorrecto. La extensión del informe no es lo que evalúa el criterio de impacto.",
+            "",
+            "Incorrecto. La duración de la prueba no se relaciona con el impacto de la comunicación.",
+            "Incorrecto. La cantidad de instrumentos no mide el impacto de la comunicación.",
+          ],
+          hint: "El impacto se refiere a las consecuencias en quien recibe la información.",
+        },
+        {
+          level: "Nivel 12",
+          question: "¿Qué debe recibir una institución?",
+          answers: [
+            "Toda la información disponible.",
+            "Solo conclusiones pertinentes para la finalidad acordada.",
+            "Todos los datos familiares.",
+            "La totalidad de las entrevistas.",
+          ],
+          correct: 1,
+          explanation:
+            "Una institución solo debe recibir las conclusiones pertinentes para la finalidad acordada, protegiendo el resto de la información.",
+          incorrectFeedback: [
+            "Incorrecto. Compartir toda la información vulnera la confidencialidad.",
+            "",
+            "Incorrecto. Los datos familiares suelen ser información protegida.",
+            "Incorrecto. Las entrevistas completas contienen información que no corresponde a la institución.",
+          ],
+          hint: "Recuerda el filtro de pertinencia y la finalidad acordada.",
+        },
+        {
+          level: "Nivel 13",
+          question: "¿Cuál es la secuencia correcta para una devolución responsable?",
+          answers: [
+            "Explicar, evaluar, diagnosticar, archivar.",
+            "Preparar, contextualizar, explicar, comprobar y acordar.",
+            "Diagnosticar, entregar y finalizar.",
+            "Aplicar, puntuar, informar y cerrar.",
+          ],
+          correct: 1,
+          explanation:
+            "Una devolución responsable sigue la secuencia: preparar, contextualizar, explicar, comprobar la comprensión y acordar los pasos siguientes.",
+          incorrectFeedback: [
+            "Incorrecto. Esta secuencia no incluye preparación ni verificación de comprensión.",
+            "",
+            "Incorrecto. Entregar y finalizar omite la explicación y la comprobación.",
+            "Incorrecto. Esta secuencia describe la aplicación de pruebas, no la devolución.",
+          ],
+          hint: "La devolución empieza antes de hablar y termina con acuerdos.",
         },
         {
           level: "Nivel 14",
-          question:
-            "¿Cómo se relaciona la regulación emocional con la calidad de vida laboral?",
+          question: "En el caso de Laura, ¿qué debía comunicarse al colegio?",
           answers: [
-            "Ayuda a afrontar mejor el estrés, cuidar las relaciones y disminuir el desgaste.",
-            "Hace que el trabajo no tenga dificultades.",
-            "Garantiza que todas las personas estén felices todo el tiempo.",
-            "Evita que existan diferencias entre compañeros.",
+            "Todos los conflictos familiares.",
+            "Los episodios de ansiedad en detalle.",
+            "Necesidades educativas, fortalezas y recomendaciones pertinentes.",
+            "Toda la historia personal.",
           ],
-          correct: 0,
+          correct: 2,
           explanation:
-            "La regulación emocional contribuye al bienestar laboral al mejorar la gestión del estrés, fortalecer las relaciones interpersonales y reducir el desgaste emocional.",
+            "Al colegio debían comunicarse las necesidades educativas, fortalezas y recomendaciones pertinentes para apoyar a Laura.",
           incorrectFeedback: [
+            "Incorrecto. Los conflictos familiares no son necesarios para la labor docente.",
+            "Incorrecto. El detalle de los episodios de ansiedad es información que debe protegerse.",
             "",
-            "Incorrecto. La regulación no elimina las dificultades; ayuda a afrontarlas de mejor manera.",
-            "Incorrecto. No garantiza felicidad constante, sino mayor capacidad de respuesta ante los desafíos.",
-            "Incorrecto. Las diferencias siempre existirán; la regulación ayuda a gestionarlas con más recursos.",
+            "Incorrecto. La historia personal completa excede la finalidad escolar.",
           ],
-          hint: "Piensa en los beneficios concretos de manejar mejor las emociones en el día a día laboral.",
+          hint: "¿Qué necesita saber un docente para apoyar a la estudiante en el aula?",
         },
         {
           level: "Nivel 15",
-          question:
-            "¿Cuál sería una conclusión adecuada sobre la regulación emocional en el trabajo?",
+          question: "En ese mismo caso, ¿qué información debía protegerse?",
           answers: [
-            "Es una habilidad útil para responder mejor ante presión, conflicto y cambios.",
-            "Solo sirve para personas que tienen cargos directivos.",
-            "Consiste en no mostrar ninguna emoción.",
-            "Es importante únicamente en la vida personal, no en lo laboral.",
+            "Las recomendaciones escolares.",
+            "Los conflictos familiares y episodios de ansiedad no necesarios para los docentes.",
+            "Las fortalezas observadas.",
+            "Las necesidades educativas.",
+          ],
+          correct: 1,
+          explanation:
+            "Debían protegerse los conflictos familiares y los episodios de ansiedad que no eran necesarios para la labor de los docentes.",
+          incorrectFeedback: [
+            "Incorrecto. Las recomendaciones escolares sí debían comunicarse.",
+            "",
+            "Incorrecto. Las fortalezas sí eran pertinentes para el colegio.",
+            "Incorrecto. Las necesidades educativas sí debían comunicarse.",
+          ],
+          hint: "Protege lo íntimo que no aporta a la finalidad escolar.",
+        },
+        {
+          level: "Nivel 16",
+          question:
+            "Si una persona pregunta si un resultado significa que «nunca podrá cambiar», ¿qué respuesta es más adecuada?",
+          answers: [
+            "Confirmar que el resultado es definitivo.",
+            "Evitar responder.",
+            "Explicar que el resultado describe un momento y debe interpretarse con el contexto.",
+            "Decir que las pruebas nunca se equivocan.",
+          ],
+          correct: 2,
+          explanation:
+            "Un resultado describe un momento y debe interpretarse con el contexto; no es una condena definitiva.",
+          incorrectFeedback: [
+            "Incorrecto. Presentar un resultado como definitivo es una conclusión absoluta que puede causar daño.",
+            "Incorrecto. Evitar responder deja a la persona con dudas y angustia.",
+            "",
+            "Incorrecto. Ninguna prueba es infalible; los resultados tienen márgenes de error.",
+          ],
+          hint: "Evita conclusiones absolutas: los resultados son una fotografía de un momento.",
+        },
+        {
+          level: "Nivel 17",
+          question:
+            "¿Cuál práctica protege mejor la confidencialidad al enviar un informe por correo?",
+          answers: [
+            "Enviarlo al grupo completo.",
+            "Verificar destinatario, autorización, contenido necesario y canal seguro.",
+            "Quitar solamente el nombre.",
+            "Enviarlo sin confirmar recepción.",
+          ],
+          correct: 1,
+          explanation:
+            "Para proteger la confidencialidad se debe verificar el destinatario, la autorización, el contenido necesario y usar un canal seguro.",
+          incorrectFeedback: [
+            "Incorrecto. Enviarlo al grupo expone la información a personas no autorizadas.",
+            "",
+            "Incorrecto. Quitar solo el nombre no garantiza la protección de los datos.",
+            "Incorrecto. No confirmar la recepción puede dejar la información en manos equivocadas.",
+          ],
+          hint: "Piensa en todos los controles antes de presionar «enviar».",
+        },
+        {
+          level: "Nivel 18",
+          question: "¿Cuál de las siguientes acciones forma parte de «no generar daño»?",
+          answers: [
+            "Reducir a la persona a un diagnóstico.",
+            "Usar lenguaje estigmatizante.",
+            "Considerar el impacto emocional.",
+            "Evitar explicar los resultados.",
+          ],
+          correct: 2,
+          explanation:
+            "No generar daño implica considerar el impacto emocional que la información puede tener en la persona.",
+          incorrectFeedback: [
+            "Incorrecto. Reducir a la persona a un diagnóstico es una forma de daño.",
+            "Incorrecto. El lenguaje estigmatizante genera daño.",
+            "",
+            "Incorrecto. No explicar los resultados puede generar confusión y angustia.",
+          ],
+          hint: "¿Cuál opción protege a la persona en lugar de afectarla?",
+        },
+        {
+          level: "Nivel 19",
+          question: "¿Cuál de estas es una estrategia general para comunicar resultados?",
+          answers: [
+            "Utilizar lenguaje claro.",
+            "Evitar incluir fortalezas.",
+            "Omitir recomendaciones.",
+            "No verificar comprensión.",
           ],
           correct: 0,
           explanation:
-            "La regulación emocional es una habilidad transversal aplicable a cualquier rol laboral; permite responder con mayor conciencia ante situaciones de presión, conflicto o cambio.",
+            "Utilizar un lenguaje claro es una estrategia general para que la persona comprenda sus resultados.",
           incorrectFeedback: [
             "",
-            "Incorrecto. La regulación emocional es útil para cualquier persona, independientemente del cargo.",
-            "Incorrecto. Regulación no es supresión; se trata de gestionar las emociones, no de ocultarlas.",
-            "Incorrecto. Las emociones también se expresan y se gestionan en el contexto laboral, que es un espacio de interacción constante.",
+            "Incorrecto. Las fortalezas deben incluirse para una visión equilibrada.",
+            "Incorrecto. Las recomendaciones orientan las acciones posteriores.",
+            "Incorrecto. Verificar la comprensión es parte esencial de la devolución.",
           ],
-          hint: "Piensa en para quién aplica esta habilidad y en qué contextos del trabajo puede ser útil.",
+          hint: "La estrategia correcta facilita que la persona entienda.",
+        },
+        {
+          level: "Nivel 20",
+          question:
+            "Cuando la comunicación está dirigida a una institución, ¿qué debe priorizarse según la presentación?",
+          answers: [
+            "Información íntima.",
+            "Objetividad, pertinencia, lenguaje técnico adecuado y protección de la información.",
+            "Lenguaje informal.",
+            "Compartir todos los datos disponibles.",
+          ],
+          correct: 1,
+          explanation:
+            "Con una institución deben priorizarse la objetividad, la pertinencia, un lenguaje técnico adecuado y la protección de la información.",
+          incorrectFeedback: [
+            "Incorrecto. La información íntima debe protegerse.",
+            "",
+            "Incorrecto. La comunicación institucional requiere un lenguaje técnico adecuado.",
+            "Incorrecto. Compartir todos los datos vulnera la confidencialidad.",
+          ],
+          hint: "Reúne los criterios de pertinencia y confidencialidad vistos en la presentación.",
         },
       ];
       const state = {
@@ -1233,9 +1318,9 @@
         pendingText.textContent =
           questions.length - state.answeredCorrectly.size;
         goalText.textContent =
-          index < 5
+          index < 7
             ? "Comprender conceptos"
-            : index < 10
+            : index < 14
               ? "Analizar contextos"
               : "Intervenir con criterio";
         questionText.textContent = q.question;
@@ -1601,7 +1686,7 @@
         const params = new URLSearchParams();
         if (name) params.set(ENTRY.Nombre_Completo, name);
         if (sid) params.set(ENTRY.ID_Alumno, sid);
-        params.set(ENTRY.Nombre_Actividad, "¿Cuánto sabes de regulación emocional?");
+        params.set(ENTRY.Nombre_Actividad, "Principios éticos y deontológicos aplicados a la comunicación de resultados psicológicos");
         params.set(ENTRY.Puntaje, String(state.score));
         params.set(ENTRY.Maximo_Puntos, String(maxScore));
         params.set(ENTRY.Porcentaje, String(percentage) + "%");
